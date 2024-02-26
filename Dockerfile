@@ -39,7 +39,8 @@ RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
 
 
 #COPY "${LOCAL_BUILD_TGZ}" "/tmp/graylog.tgz"
-COPY "graylog-enterprise-5.2.4.tgz" "/tmp/graylog.tgz"
+#COPY "graylog-enterprise-5.2.4.tgz" 
+RUN cp graylog-enterprise-5.2.4.tgz "/tmp/graylog.tgz"
 # An empty /tmp/graylog.tgz file indicates that we don't use a
 # custom LOCAL_BUILD_TGZ file.
 RUN if [ -f "/tmp/graylog.tgz" ] && [ -s "/tmp/graylog.tgz" ]; then \
