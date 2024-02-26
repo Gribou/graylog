@@ -27,6 +27,7 @@ RUN \
   apt-get install --assume-yes \
     ca-certificates \
     curl > /dev/null
+RUN mkdir /tmp/download    
 RUN cd /tmp/download
 #COPY build/fetch-and-extract.sh /bin/fetch-and-extract
 RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
