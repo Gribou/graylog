@@ -27,8 +27,8 @@ RUN \
   apt-get install --assume-yes \
     ca-certificates \
     curl > /dev/null
-
-COPY build/fetch-and-extract.sh /bin/fetch-and-extract
+RUN cd /tmp/download
+#COPY build/fetch-and-extract.sh /bin/fetch-and-extract
 RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
       chmod +x /bin/fetch-and-extract \
       && fetch-and-extract \
@@ -38,7 +38,7 @@ RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
 
 
 #COPY "${LOCAL_BUILD_TGZ}" "/tmp/graylog.tgz"
-COPY ".empty" "/tmp/graylog.tgz"
+COPY "." "/tmp/graylog.tgz"
 # An empty /tmp/graylog.tgz file indicates that we don't use a
 # custom LOCAL_BUILD_TGZ file.
 RUN if [ -f "/tmp/graylog.tgz" ] && [ -s "/tmp/graylog.tgz" ]; then \
