@@ -17,6 +17,7 @@ ARG TARGETPLATFORM
 # all files from the build context.
 ARG LOCAL_BUILD_TGZ=.empty
 
+
 WORKDIR /tmp
 
 # hadolint ignore=DL3008,DL3015
@@ -36,8 +37,8 @@ RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
     fi
 
 
-COPY "${LOCAL_BUILD_TGZ}" "/tmp/graylog.tgz"
-
+#COPY "${LOCAL_BUILD_TGZ}" "/tmp/graylog.tgz"
+COPY ".empty" "/tmp/graylog.tgz"
 # An empty /tmp/graylog.tgz file indicates that we don't use a
 # custom LOCAL_BUILD_TGZ file.
 RUN if [ -f "/tmp/graylog.tgz" ] && [ -s "/tmp/graylog.tgz" ]; then \
