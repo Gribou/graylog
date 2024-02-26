@@ -29,7 +29,7 @@ RUN \
     curl > /dev/null
 RUN mkdir /tmp/download    
 WORKDIR /tmp/download
-#COPY build/fetch-and-extract.sh /bin/fetch-and-extract
+COPY build/fetch-and-extract.sh /bin/fetch-and-extract
 RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
       chmod +x /bin/fetch-and-extract \
       && fetch-and-extract \
