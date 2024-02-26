@@ -5,8 +5,8 @@ ARG VCS_REF
 ARG BUILD_DATE
 ARG GRAYLOG_VERSION
 ARG GRAYLOG_HOME=/usr/share/graylog
-ARG GRAYLOG_UID=1100
-ARG GRAYLOG_GID=1100
+#ARG GRAYLOG_UID=1100
+#ARG GRAYLOG_GID=1100
 ARG TARGETPLATFORM
 
 # We default to an empty file instead of leaving LOCAL_BUILD_TGZ blank
@@ -31,8 +31,8 @@ COPY build/fetch-and-extract.sh /bin/fetch-and-extract
 RUN if [ "${LOCAL_BUILD_TGZ}" = ".empty" ]; then \
       chmod +x /bin/fetch-and-extract \
       && fetch-and-extract \
-         "https://packages.graylog2.org/releases/graylog-enterprise/graylog-enterprise-${GRAYLOG_VERSION}.tgz" \
-         "https://packages.graylog2.org/releases/graylog-enterprise/graylog-enterprise-${GRAYLOG_VERSION}.tgz.sha256.txt"; \
+         "https://packages.graylog2.org/releases/graylog-enterprise/graylog-enterprise-5.2.4.tgz" \
+         "https://packages.graylog2.org/releases/graylog-enterprise/graylog-enterprise-5.2.4.tgz.sha256.txt"; \
     fi
 
 
