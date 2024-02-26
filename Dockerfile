@@ -4,8 +4,8 @@ ARG VCS_REF
 ARG BUILD_DATE
 ARG GRAYLOG_VERSION
 ARG GRAYLOG_HOME=/usr/share/graylog
-ARG GRAYLOG_UID=1100
-ARG GRAYLOG_GID=1100
+#ARG GRAYLOG_UID=1100
+#ARG GRAYLOG_GID=1100
 ARG TARGETPLATFORM
 
 # We default to an empty file instead of leaving LOCAL_BUILD_TGZ blank
@@ -59,7 +59,7 @@ RUN if [ "${TARGETPLATFORM}" = "linux/arm64" ]; then \
 RUN \
   install \
     --directory \
-    --mode=0750 \
+    --mode=0777 \
     /opt/graylog/data \
     /opt/graylog/data/journal \
     /opt/graylog/data/log \
@@ -85,10 +85,10 @@ ARG VCS_REF
 ARG GRAYLOG_VERSION
 ARG BUILD_DATE
 ARG GRAYLOG_HOME=/usr/share/graylog
-ARG GRAYLOG_USER=graylog
-ARG GRAYLOG_UID=1100
-ARG GRAYLOG_GROUP=graylog
-ARG GRAYLOG_GID=1100
+#ARG GRAYLOG_USER=graylog
+#ARG GRAYLOG_UID=1100
+#ARG GRAYLOG_GROUP=graylog
+#ARG GRAYLOG_GID=1100
 
 COPY --chown=${GRAYLOG_UID}:${GRAYLOG_GID} --from=graylog-downloader ${GRAYLOG_HOME} ${GRAYLOG_HOME}
 
@@ -122,7 +122,7 @@ RUN \
     --gid "${GRAYLOG_GID}" \
     --quiet \
     "${GRAYLOG_GROUP}" && \
-  adduser \
+  #adduser \
     --disabled-password \
     --disabled-login \
     --gecos '' \
